@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WorkSpace — Корпоративный портал</title>
+    <style>
+        :root {
+            --primary: #0A2463;
+            --accent: #F0B429;
+            --bg: #F5F7FA;
+            --text: #1A1A1A;
+            --error: #E74C3C;
+            --success: #27AE60;
+            --radius: 8px;
+            --shadow: 0 2px 8px rgba(10,36,99,0.06);
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-image: url('background.png');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .portal {
+            width: 1200px;
+            max-width: 100%;
+            background: var(--bg);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 12px 36px rgba(0,0,0,0.12);
+            display: flex;
+            flex-direction: column;
+            min-height: 85vh;
+        }
+        .header {
+            background: var(--primary);
+            color: white;
+            padding: 0 24px;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 22px;
+            color: white;
+        }
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: rgba(240,180,41,0.15);
+        }
+        .logo-icon img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .main-nav { display: flex; gap: 6px; flex-wrap: wrap; }
+        .main-nav a {
+            color: rgba(255,255,255,0.85);
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 500;
+            transition: all 0.2s;
+            cursor: pointer;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .main-nav a:hover { background: rgba(255,255,255,0.12); color: white; }
+        .main-nav a.active { background: rgba(255,255,255,0.18); color: white; font-weight: 700; }
+        .nav-icon { width: 22px; height: 22px; display: inline-block; }
+        .nav-icon img { width: 100%; height: 100%; object-fit: contain; }
+        .user-info { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+        .avatar {
+            width: 40px; height: 40px; border-radius: 50%;
+            background: var(--accent); color: var(--primary);
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 700; font-size: 15px; cursor: pointer;
+            border: 2px dashed var(--accent); overflow: hidden; transition: all 0.2s;
+        }
+        .avatar:hover { background: #e5a800; }
+        .avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+        .body-wrap { display: flex; flex: 1; }
+        .sidebar {
+            width: 260px; background: #f8f9fc;
+            border-right: 1px solid #e2e8f0; padding: 24px 0;
+            display: flex; flex-direction: column;
+        }
+        .sidebar-item {
+            padding: 14px 24px; font-size: 15px; color: #4a5568;
+            display: flex; align-items: center; gap: 12px;
+            cursor: pointer; transition: 0.2s; border-right: 3px solid transparent;
+        }
+        .sidebar-item:hover { background: #eef1f9; }
+        .sidebar-item.active {
+            background: #eef1f9; color: var(--primary); font-weight: 600;
+            border-right-color: var(--accent);
+        }
+        .sidebar-icon {
+            width: 32px; height: 32px; border-radius: 8px;
+            display: flex; align-items: center; justify-content: center; overflow: hidden;
+        }
+        .sidebar-icon img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .main { flex: 1; padding: 28px 32px; background: var(--bg); }
+        .page-title { font-size: 24px; font-weight: 700; color: var(--primary); margin-bottom: 24px; }
+        .card {
+            background: white; border-radius: 12px; padding: 18px;
+            box-shadow: var(--shadow); margin-bottom: 18px;
+        }
+        .card h3 { color: var(--primary); font-size: 17px; margin-bottom: 8px; }
+        .card p { color: #4a5568; font-size: 14px; }
+        .card small { color: #718096; font-size: 12px; }
+        .tags { display: flex; gap: 8px; margin-bottom: 18px; flex-wrap: wrap; }
+        .tag {
+            padding: 7px 16px; border-radius: 14px; font-size: 13px;
+            font-weight: 500; cursor: pointer; transition: 0.2s;
+            background: #eef1f9; color: var(--primary); border: none;
+        }
+        .tag.active { background: var(--accent); color: var(--primary); font-weight: 700; }
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            gap: 8px; padding: 12px 28px; border: none;
+            border-radius: var(--radius); background: var(--accent);
+            color: var(--primary); font-weight: 700; font-size: 15px;
+            cursor: pointer; min-width: 48px; min-height: 48px; margin-top: 14px;
+            transition: all 0.2s;
+        }
+        .btn:hover { background: #e5a800; }
+        .btn:active { transform: scale(0.97); }
+        .btn-outline {
+            background: transparent; border: 2px solid var(--primary);
+            color: var(--primary); padding: 10px 20px;
+            border-radius: var(--radius); font-weight: 600; font-size: 14px;
+            cursor: pointer; transition: all 0.2s;
+        }
+        .btn-outline:hover { background: rgba(10,36,99,0.05); }
+        .btn-outline:active { transform: scale(0.97); }
+        .form-group { margin-bottom: 16px; }
+        .form-label { display: block; font-weight: 600; margin-bottom: 6px; color: var(--primary); font-size: 14px; }
+        .form-input {
+            width: 100%; padding: 12px; border: 1px solid #cbd5e0;
+            border-radius: var(--radius); font-size: 14px; outline: none; transition: all 0.2s;
+        }
+        .form-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(240,180,41,0.2); }
+        .grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        .section { display: none; }
+        .section.active { display: block; }
+        .search-box { position: relative; margin-bottom: 18px; }
+        .search-box input {
+            width: 100%; padding: 12px 12px 12px 40px;
+            border: 1px solid #cbd5e0; border-radius: var(--radius);
+            font-size: 14px; outline: none; transition: all 0.2s;
+        }
+        .search-box input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(240,180,41,0.2); }
+        .search-box svg {
+            position: absolute; left: 12px; top: 50%;
+            transform: translateY(-50%); width: 20px; height: 20px; stroke: #718096;
+        }
+        .success-box {
+            background: #e6ffed; padding: 14px; border-radius: 8px;
+            margin: 10px 0; font-weight: 600; color: #0a5c2a;
+        }
+        .checkbox-wrapper {
+            display: flex; align-items: center; gap: 10px;
+            margin-bottom: 12px; cursor: pointer; font-size: 15px;
+        }
+        .custom-checkbox {
+            width: 24px; height: 24px; border-radius: 6px;
+            border: 2px solid #cbd5e0; display: flex;
+            align-items: center; justify-content: center; transition: all 0.2s; position: relative;
+        }
+        .custom-checkbox.checked { background: var(--accent); border-color: var(--accent); }
+        .custom-checkbox.checked::after { content: '✓'; color: var(--primary); font-weight: 700; font-size: 14px; }
+        .support-box {
+            background: #fff3cd; border: 1px solid var(--accent);
+            border-radius: 12px; padding: 18px; margin-top: 24px;
+            display: flex; align-items: flex-start; gap: 16px;
+        }
+        .support-icon {
+            width: 48px; height: 48px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden; flex-shrink: 0; background: white;
+            border: 2px dashed var(--accent); cursor: pointer; transition: all 0.2s;
+        }
+        .support-icon:hover { background: rgba(240,180,41,0.1); border-color: #e5a800; }
+        .support-icon img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .support-info { flex: 1; }
+        .support-info h3 { color: var(--primary); margin-bottom: 8px; }
+        .support-info p { color: #4a5568; font-size: 14px; margin-bottom: 6px; }
+        .modal-overlay {
+            display: none; position: fixed; top: 0; left: 0;
+            width: 100%; height: 100%; background: rgba(0,0,0,0.5);
+            z-index: 1000; justify-content: center; align-items: center;
+        }
+        .modal-overlay.show { display: flex; }
+        .modal {
+            background: white; border-radius: 12px; padding: 28px;
+            max-width: 550px; width: 90%; box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+        .modal h2 { color: var(--primary); margin-bottom: 14px; }
+        .modal p { color: #4a5568; margin-bottom: 18px; line-height: 1.6; }
+        .modal .btn { margin-top: 0; }
+        input[type="file"] { display: none; }
+    </style>
+</head>
+<body>
+
+<div class="portal">
+    <header class="header">
+        <div class="logo-area" onclick="switchPage('news')">
+            <div class="logo-icon"><img src="logo.png" alt="Логотип WorkSpace"></div>
+            WorkSpace
+        </div>
+        <nav class="main-nav">
+            <a data-page="news" class="active" onclick="switchPage('news')">
+                <span class="nav-icon"><img src="news.png" alt="Новости"></span> Новости
+            </a>
+            <a data-page="docs" onclick="switchPage('docs')">
+                <span class="nav-icon"><img src="docs.png" alt="Документы"></span> Документы
+            </a>
+            <a data-page="vacation" onclick="switchPage('vacation')">
+                <span class="nav-icon"><img src="vacation.png" alt="Отпуск"></span> Отпуск
+            </a>
+            <a data-page="profile" onclick="switchPage('profile')">
+                <span class="nav-icon"><img src="profile.png" alt="Профиль"></span> Профиль
+            </a>
+        </nav>
+        <div class="user-info">
+            <span>Подсадний З.М.</span>
+            <div class="avatar" id="avatar-icon" onclick="event.stopPropagation(); document.getElementById('file-avatar').click()" title="Нажми, чтобы заменить аватар">
+                <span id="avatar-text">ПЗ</span>
+                <input type="file" id="file-avatar" accept="image/*" onchange="loadAvatar(event)">
+            </div>
+        </div>
+    </header>
+
+    <div class="body-wrap">
+        <aside class="sidebar">
+            <div class="sidebar-item active" data-side="news" onclick="switchPage('news')">
+                <div class="sidebar-icon"><img src="news.png" alt="Новости"></div> Новости
+            </div>
+            <div class="sidebar-item" data-side="docs" onclick="switchPage('docs')">
+                <div class="sidebar-icon"><img src="docs.png" alt="Документы"></div> Документы
+            </div>
+            <div class="sidebar-item" data-side="vacation" onclick="switchPage('vacation')">
+                <div class="sidebar-icon"><img src="vacation.png" alt="Отпуск"></div> Отпуск
+            </div>
+            <div class="sidebar-item" data-side="profile" onclick="switchPage('profile')">
+                <div class="sidebar-icon"><img src="profile.png" alt="Профиль"></div> Профиль
+            </div>
+        </aside>
+
+        <main class="main">
+            <div id="section-news" class="section active">
+                <h1 class="page-title">Лента новостей</h1>
+                <div class="search-box">
+                    <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                    <input type="search" id="news-search" placeholder="Поиск новостей...">
+                </div>
+                <div class="tags" id="news-tags">
+                    <span class="tag active" data-tag="all">Все</span><span class="tag" data-tag="important">Важное</span><span class="tag" data-tag="events">События</span><span class="tag" data-tag="hr">HR</span>
+                </div>
+                <div id="news-container">
+                    <article class="card" data-tags="important" style="cursor:pointer;"><h3>Обновление системы подачи заявок</h3><p>Теперь можно отслеживать статус заявки в реальном времени.</p><small>15.12.2025 · Подсадний З.М.</small></article>
+                    <article class="card" data-tags="hr" style="cursor:pointer;"><h3>График отпусков на 2026 год</h3><p>Утверждён и доступен в разделе «Документы».</p><small>10.12.2025 · HR-отдел</small></article>
+                    <article class="card" data-tags="events" style="cursor:pointer;"><h3>Корпоративное обучение в феврале</h3><p>Приглашаем всех сотрудников на серию вебинаров.</p><small>05.12.2025 · Учебный центр</small></article>
+                </div>
+                <button class="btn" id="btn-add-news">+ Новая новость</button>
+            </div>
+
+            <div id="section-docs" class="section">
+                <h1 class="page-title">Документы</h1>
+                <div class="search-box">
+                    <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+                    <input type="search" id="docs-search" placeholder="Поиск документов...">
+                </div>
+                <div class="card" style="font-weight:600; color:var(--primary);">📁 Шаблоны</div>
+                <div class="card" style="display:flex; justify-content:space-between; align-items:center;"><span>📄 Договор_аренды.docx <small style="color:#718096;">20.11.2025 · HR</small></span><button class="btn-outline" onclick="downloadFile('Договор_аренды.docx')">Скачать</button></div>
+                <div class="card" style="display:flex; justify-content:space-between; align-items:center;"><span>📄 Шаблон_отчёта.xlsx <small style="color:#718096;">15.11.2025 · Бухгалтерия</small></span><button class="btn-outline" onclick="downloadFile('Шаблон_отчёта.xlsx')">Скачать</button></div>
+                <div class="card" style="font-weight:600; color:var(--primary);">📁 Политики</div>
+                <div class="card" style="display:flex; justify-content:space-between; align-items:center;"><span>📄 Положение_об_отпусках.pdf <small style="color:#718096;">05.10.2025 · HR</small></span><button class="btn-outline" onclick="downloadFile('Положение_об_отпусках.pdf')">Скачать</button></div>
+            </div>
+
+            <div id="section-vacation" class="section">
+                <h1 class="page-title">Заявление на отпуск</h1>
+                <div class="card">
+                    <div class="grid-2col">
+                        <div class="form-group"><label class="form-label">Дата начала</label><input type="date" id="start-date" class="form-input"></div>
+                        <div class="form-group"><label class="form-label">Дата окончания</label><input type="date" id="end-date" class="form-input"></div>
+                    </div>
+                    <div class="form-group"><label class="form-label">Тип отпуска</label><select id="vacation-type" class="form-input"><option>Ежегодный оплачиваемый</option><option>Без сохранения зарплаты</option><option>Учебный</option></select></div>
+                    <div id="balance-info" class="success-box">✅ Доступно: 14 дней · Запрошено: 0 дней</div>
+                    <button class="btn" id="btn-submit-vacation">Отправить заявку</button>
+                    <div id="vacation-result" style="margin-top:10px;"></div>
+                </div>
+            </div>
+
+            <div id="section-profile" class="section">
+                <h1 class="page-title">Профиль сотрудника</h1>
+                <div class="card">
+                    <div style="display:flex; align-items:center; gap:16px;">
+                        <div class="avatar" id="profile-avatar" style="width:60px; height:60px; font-size:24px; cursor:pointer;" onclick="event.stopPropagation(); document.getElementById('file-avatar2').click()" title="Заменить аватар">
+                            <span id="profile-avatar-text">ПЗ</span>
+                            <input type="file" id="file-avatar2" accept="image/*" onchange="loadProfileAvatar(event)">
+                        </div>
+                        <div><h3>Подсадний Захар Максимович</h3><p>Менеджер по продажам</p><p style="font-size:13px; color:#718096;">📧 podsadniy@workspace.local</p></div>
+                    </div>
+                </div>
+                <div class="card">
+                    <h3 style="margin-bottom:14px;">Настройки уведомлений</h3>
+                    <label class="checkbox-wrapper" id="label-sound"><span class="custom-checkbox checked" id="check-sound"></span> Звуковые оповещения</label>
+                    <label class="checkbox-wrapper" id="label-critical"><span class="custom-checkbox" id="check-critical"></span> Только критические ошибки</label>
+                    <button class="btn" id="btn-save-settings">Сохранить настройки</button>
+                    <div id="settings-result" style="margin-top:12px;"></div>
+                </div>
+                <div class="card">
+                    <h3>📋 Мои заявки</h3>
+                    <div id="requests-list"><p style="color:#718096;">У вас пока нет отправленных заявок.</p></div>
+                </div>
+                <div class="support-box">
+                    <div class="support-icon" id="support-icon" onclick="event.stopPropagation(); document.getElementById('file-support').click()" title="Нажми, чтобы заменить иконку поддержки">
+                        <img src="support.png" alt="Поддержка">
+                        <input type="file" id="file-support" accept="image/*" onchange="loadSupportIcon(event)">
+                    </div>
+                    <div class="support-info"><h3>📞 Поддержка</h3><p>Если у вас возникли вопросы или проблемы, обратитесь в IT-отдел.</p><p>📧 <strong>support@workspace.local</strong></p><p>📱 <strong>+7 (999) 123-45-67</strong></p><p>🏢 <strong>Кабинет 101, 1 этаж</strong></p></div>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+
+<div class="modal-overlay" id="modal-overlay">
+    <div class="modal"><h2 id="modal-title">Заголовок</h2><p id="modal-text">Текст новости...</p><button class="btn" onclick="closeModal()">Закрыть</button></div>
+</div>
+
+<script>
+    // Ваш Formspree endpoint
+    const FORMSPREE_URL = 'https://formspree.io/f/maqkdpgq';
+
+    function loadAvatar(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const av = document.getElementById('avatar-icon');
+                document.getElementById('avatar-text').style.display = 'none';
+                av.innerHTML = `<img src="${e.target.result}" alt="Аватар">`;
+            };
+            reader.readDataAsURL(file);
+        }
+    }
+
+    function loadProfileAvatar(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const av = document.getElementById('profile-avatar');
+                document.getElementById('profile-avatar-text').style.display = 'none';
+                av.innerHTML = `<img src="${e.target.result}" alt="Аватар" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">`;
+            };
+            reader.readDataAsURL(file);
+        }
+    }
+
+    function loadSupportIcon(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('support-icon').innerHTML = `<img src="${e.target.result}" alt="Поддержка" style="max-width:100%; max-height:100%; object-fit:contain;">`;
+            };
+            reader.readDataAsURL(file);
+        }
+    }
+
+    function downloadFile(filename) {
+        const content = `Это учебный файл "${filename}", созданный в рамках практики ПМ.08.`;
+        const blob = new Blob([content], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url; a.download = filename; a.click();
+        URL.revokeObjectURL(url);
+    }
+
+    function saveRequestToLocalStorage(startDate, endDate, vacationType) {
+        const requests = JSON.parse(localStorage.getItem('workplace_requests') || '[]');
+        requests.push({
+            id: Date.now(),
+            startDate: startDate,
+            endDate: endDate,
+            type: vacationType,
+            status: 'На рассмотрении',
+            createdAt: new Date().toLocaleDateString('ru-RU')
+        });
+        localStorage.setItem('workplace_requests', JSON.stringify(requests));
+    }
+
+    function loadRequests() {
+        const requests = JSON.parse(localStorage.getItem('workplace_requests') || '[]');
+        const container = document.getElementById('requests-list');
+        if (requests.length === 0) {
+            container.innerHTML = '<p style="color:#718096;">У вас пока нет отправленных заявок.</p>';
+            return;
+        }
+        container.innerHTML = requests.reverse().map(req => `
+            <div class="card" style="margin-bottom:8px;">
+                <strong>Заявка №${req.id.toString().slice(-4)}</strong> от ${req.createdAt}<br>
+                📅 ${req.startDate} → ${req.endDate}<br>
+                🏖️ ${req.type}<br>
+                <small style="color:var(--accent);">Статус: ${req.status}</small>
+            </div>
+        `).join('');
+    }
+
+    async function sendRequestToEmail(startDate, endDate, vacationType) {
+        const formData = new FormData();
+        formData.append('start_date', startDate);
+        formData.append('end_date', endDate);
+        formData.append('vacation_type', vacationType);
+        formData.append('employee', 'Подсадний Захар Максимович');
+        formData.append('email', 'zakhar200@list.ru');
+
+        try {
+            const response = await fetch(FORMSPREE_URL, {
+                method: 'POST',
+                body: formData,
+                headers: { 'Accept': 'application/json' }
+            });
+            return response.ok;
+        } catch (error) {
+            console.error('Ошибка отправки:', error);
+            return false;
+        }
+    }
+
+    const checkSound = document.getElementById('check-sound');
+    const checkCritical = document.getElementById('check-critical');
+    document.getElementById('label-sound').addEventListener('click', () => checkSound.classList.toggle('checked'));
+    document.getElementById('label-critical').addEventListener('click', () => checkCritical.classList.toggle('checked'));
+
+    const sections = {
+        news: document.getElementById('section-news'),
+        docs: document.getElementById('section-docs'),
+        vacation: document.getElementById('section-vacation'),
+        profile: document.getElementById('section-profile')
+    };
+    const navLinks = document.querySelectorAll('.main-nav a');
+    const sideItems = document.querySelectorAll('.sidebar-item');
+
+    function switchPage(page) {
+        Object.values(sections).forEach(sec => sec.classList.remove('active'));
+        if (sections[page]) sections[page].classList.add('active');
+        navLinks.forEach(link => link.classList.remove('active'));
+        const navTarget = document.querySelector(`.main-nav a[data-page="${page}"]`);
+        if (navTarget) navTarget.classList.add('active');
+        sideItems.forEach(item => item.classList.remove('active'));
+        const sideTarget = document.querySelector(`.sidebar-item[data-side="${page}"]`);
+        if (sideTarget) sideTarget.classList.add('active');
+        if (page === 'profile') loadRequests();
+    }
+
+    navLinks.forEach(link => link.addEventListener('click', e => { e.preventDefault(); switchPage(link.dataset.page); }));
+
+    document.querySelectorAll('#news-tags .tag').forEach(tag => {
+        tag.addEventListener('click', function() {
+            document.querySelectorAll('#news-tags .tag').forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            const selectedTag = this.dataset.tag;
+            document.querySelectorAll('#news-container .card').forEach(card => {
+                card.style.display = (selectedTag === 'all' || card.dataset.tags === selectedTag) ? '' : 'none';
+            });
+        });
+    });
+
+    document.getElementById('news-search').addEventListener('input', function() {
+        const term = this.value.toLowerCase();
+        document.querySelectorAll('#news-container .card').forEach(card => {
+            card.style.display = card.textContent.toLowerCase().includes(term) ? '' : 'none';
+        });
+    });
+
+    const modalOverlay = document.getElementById('modal-overlay');
+    const modalTitle = document.getElementById('modal-title');
+    const modalText = document.getElementById('modal-text');
+    document.querySelectorAll('#news-container .card').forEach(card => {
+        card.addEventListener('click', function() {
+            modalTitle.textContent = this.querySelector('h3').textContent;
+            modalText.textContent = this.querySelector('p').textContent + ' Это расширенный текст новости. Все данные учебные и используются в рамках практики ПМ.08.';
+            modalOverlay.classList.add('show');
+        });
+    });
+    window.closeModal = function() { modalOverlay.classList.remove('show'); };
+    modalOverlay.addEventListener('click', function(e) { if (e.target === modalOverlay) closeModal(); });
+
+    const startInput = document.getElementById('start-date');
+    const endInput = document.getElementById('end-date');
+    const balanceInfo = document.getElementById('balance-info');
+    const btnSubmit = document.getElementById('btn-submit-vacation');
+    const vacationResult = document.getElementById('vacation-result');
+
+    function updateBalance() {
+        if (!startInput.value || !endInput.value) { balanceInfo.innerHTML = '✅ Доступно: 14 дней · Запрошено: 0 дней'; return; }
+        const start = new Date(startInput.value), end = new Date(endInput.value);
+        if (end < start) { balanceInfo.innerHTML = '⚠️ Дата окончания раньше даты начала!'; return; }
+        const days = Math.ceil((end - start) / (1000*60*60*24)) + 1;
+        balanceInfo.innerHTML = `✅ Доступно: 14 дней · Запрошено: ${days} дней`;
+    }
+    startInput.addEventListener('change', updateBalance);
+    endInput.addEventListener('change', updateBalance);
+
+    btnSubmit.addEventListener('click', async function() {
+        if (!startInput.value || !endInput.value) { vacationResult.innerHTML = '<span style="color:#E74C3C;">Выберите даты.</span>'; return; }
+        if (new Date(endInput.value) < new Date(startInput.value)) { vacationResult.innerHTML = '<span style="color:#E74C3C;">Дата окончания раньше начала.</span>'; return; }
+
+        const startDate = startInput.value;
+        const endDate = endInput.value;
+        const vacationType = document.getElementById('vacation-type').value;
+
+        btnSubmit.disabled = true;
+        btnSubmit.textContent = 'Отправка...';
+        vacationResult.innerHTML = '';
+
+        const emailSent = await sendRequestToEmail(startDate, endDate, vacationType);
+        saveRequestToLocalStorage(startDate, endDate, vacationType);
+
+        if (emailSent) {
+            vacationResult.innerHTML = '<span style="color:#27AE60; font-weight:700;">✅ Заявка отправлена! Письмо придёт на почту.</span>';
+        } else {
+            vacationResult.innerHTML = '<span style="color:#27AE60; font-weight:700;">✅ Заявка сохранена локально. Проверьте раздел "Мои заявки".</span>';
+        }
+
+        btnSubmit.disabled = true;
+        btnSubmit.style.opacity = '0.6';
+        btnSubmit.textContent = 'Отправлено ✓';
+    });
+
+    document.getElementById('btn-save-settings').addEventListener('click', function() {
+        const result = document.getElementById('settings-result');
+        result.innerHTML = '<span style="color:#27AE60; font-weight:700;">✅ Настройки сохранены!</span>';
+        setTimeout(() => { result.innerHTML = ''; }, 3000);
+    });
+
+    loadRequests();
+    console.log('🚀 WorkSpace запущен. Заявки сохраняются и отправляются через Formspree.');
+</script>
+</body>
+</html>
