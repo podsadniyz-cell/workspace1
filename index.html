@@ -49,44 +49,23 @@
             justify-content: space-between;
             gap: 16px;
         }
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-            font-weight: 700;
-            font-size: 22px;
-            color: white;
-        }
+        .logo-area { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 22px; }
         .logo-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            background: rgba(240,180,41,0.15);
+            width: 44px; height: 44px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden; background: rgba(240,180,41,0.15);
         }
         .logo-icon img { max-width: 100%; max-height: 100%; object-fit: contain; }
         .main-nav { display: flex; gap: 6px; flex-wrap: wrap; }
         .main-nav a {
-            color: rgba(255,255,255,0.85);
-            text-decoration: none;
-            padding: 10px 16px;
-            border-radius: 6px;
-            font-size: 15px;
-            font-weight: 500;
-            transition: all 0.2s;
-            cursor: pointer;
-            white-space: nowrap;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            color: rgba(255,255,255,0.85); text-decoration: none;
+            padding: 10px 16px; border-radius: 6px; font-size: 15px;
+            font-weight: 500; transition: all 0.2s; cursor: pointer;
+            white-space: nowrap; display: flex; align-items: center; gap: 8px;
         }
         .main-nav a:hover { background: rgba(255,255,255,0.12); color: white; }
         .main-nav a.active { background: rgba(255,255,255,0.18); color: white; font-weight: 700; }
-        .nav-icon { width: 22px; height: 22px; display: inline-block; }
+        .nav-icon { width: 22px; height: 22px; }
         .nav-icon img { width: 100%; height: 100%; object-fit: contain; }
         .user-info { display: flex; align-items: center; gap: 10px; font-size: 14px; }
         .avatar {
@@ -94,9 +73,8 @@
             background: var(--accent); color: var(--primary);
             display: flex; align-items: center; justify-content: center;
             font-weight: 700; font-size: 15px; cursor: pointer;
-            border: 2px dashed var(--accent); overflow: hidden; transition: all 0.2s;
+            border: 2px dashed var(--accent); overflow: hidden;
         }
-        .avatar:hover { background: #e5a800; }
         .avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
         .body-wrap { display: flex; flex: 1; }
         .sidebar {
@@ -114,10 +92,7 @@
             background: #eef1f9; color: var(--primary); font-weight: 600;
             border-right-color: var(--accent);
         }
-        .sidebar-icon {
-            width: 32px; height: 32px; border-radius: 8px;
-            display: flex; align-items: center; justify-content: center; overflow: hidden;
-        }
+        .sidebar-icon { width: 32px; height: 32px; border-radius: 8px; overflow: hidden; }
         .sidebar-icon img { max-width: 100%; max-height: 100%; object-fit: contain; }
         .main { flex: 1; padding: 28px 32px; background: var(--bg); }
         .page-title { font-size: 24px; font-weight: 700; color: var(--primary); margin-bottom: 24px; }
@@ -131,8 +106,8 @@
         .tags { display: flex; gap: 8px; margin-bottom: 18px; flex-wrap: wrap; }
         .tag {
             padding: 7px 16px; border-radius: 14px; font-size: 13px;
-            font-weight: 500; cursor: pointer; transition: 0.2s;
-            background: #eef1f9; color: var(--primary); border: none;
+            font-weight: 500; cursor: pointer; border: none;
+            background: #eef1f9; color: var(--primary);
         }
         .tag.active { background: var(--accent); color: var(--primary); font-weight: 700; }
         .btn {
@@ -149,15 +124,14 @@
             background: transparent; border: 2px solid var(--primary);
             color: var(--primary); padding: 10px 20px;
             border-radius: var(--radius); font-weight: 600; font-size: 14px;
-            cursor: pointer; transition: all 0.2s;
+            cursor: pointer;
         }
         .btn-outline:hover { background: rgba(10,36,99,0.05); }
-        .btn-outline:active { transform: scale(0.97); }
         .form-group { margin-bottom: 16px; }
         .form-label { display: block; font-weight: 600; margin-bottom: 6px; color: var(--primary); font-size: 14px; }
         .form-input {
             width: 100%; padding: 12px; border: 1px solid #cbd5e0;
-            border-radius: var(--radius); font-size: 14px; outline: none; transition: all 0.2s;
+            border-radius: var(--radius); font-size: 14px; outline: none;
         }
         .form-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(240,180,41,0.2); }
         .grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
@@ -167,7 +141,7 @@
         .search-box input {
             width: 100%; padding: 12px 12px 12px 40px;
             border: 1px solid #cbd5e0; border-radius: var(--radius);
-            font-size: 14px; outline: none; transition: all 0.2s;
+            font-size: 14px; outline: none;
         }
         .search-box input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(240,180,41,0.2); }
         .search-box svg {
@@ -185,10 +159,10 @@
         .custom-checkbox {
             width: 24px; height: 24px; border-radius: 6px;
             border: 2px solid #cbd5e0; display: flex;
-            align-items: center; justify-content: center; transition: all 0.2s; position: relative;
+            align-items: center; justify-content: center;
         }
         .custom-checkbox.checked { background: var(--accent); border-color: var(--accent); }
-        .custom-checkbox.checked::after { content: '✓'; color: var(--primary); font-weight: 700; font-size: 14px; }
+        .custom-checkbox.checked::after { content: '✓'; color: var(--primary); font-weight: 700; }
         .support-box {
             background: #fff3cd; border: 1px solid var(--accent);
             border-radius: 12px; padding: 18px; margin-top: 24px;
@@ -196,11 +170,10 @@
         }
         .support-icon {
             width: 48px; height: 48px; border-radius: 10px;
-            display: flex; align-items: center; justify-content: center;
-            overflow: hidden; flex-shrink: 0; background: white;
-            border: 2px dashed var(--accent); cursor: pointer; transition: all 0.2s;
+            overflow: hidden; border: 2px dashed var(--accent);
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            background: white;
         }
-        .support-icon:hover { background: rgba(240,180,41,0.1); border-color: #e5a800; }
         .support-icon img { max-width: 100%; max-height: 100%; object-fit: contain; }
         .support-info { flex: 1; }
         .support-info h3 { color: var(--primary); margin-bottom: 8px; }
@@ -225,8 +198,8 @@
 
 <div class="portal">
     <header class="header">
-        <div class="logo-area" onclick="switchPage('news')">
-            <div class="logo-icon"><img src="logo.png" alt="Логотип WorkSpace"></div>
+        <div class="logo-area">
+            <div class="logo-icon"><img src="logo.png" alt="Логотип"></div>
             WorkSpace
         </div>
         <nav class="main-nav">
@@ -243,10 +216,10 @@
                 <span class="nav-icon"><img src="profile.png" alt="Профиль"></span> Профиль
             </a>
         </nav>
-        <div class="user-info">
-            <span>Подсадний З.М.</span>
-            <div class="avatar" id="avatar-icon" onclick="event.stopPropagation(); document.getElementById('file-avatar').click()" title="Нажми, чтобы заменить аватар">
-                <span id="avatar-text">ПЗ</span>
+        <div class="user-info" id="user-display">
+            <span id="user-name-display">Гость</span>
+            <div class="avatar" id="avatar-icon" onclick="document.getElementById('file-avatar').click()">
+                <span id="avatar-text">👤</span>
                 <input type="file" id="file-avatar" accept="image/*" onchange="loadAvatar(event)">
             </div>
         </div>
@@ -269,7 +242,26 @@
         </aside>
 
         <main class="main">
-            <div id="section-news" class="section active">
+            <div id="section-auth" class="section active">
+                <h1 class="page-title">Вход / Регистрация</h1>
+                <div class="card">
+                    <div class="form-group"><label class="form-label">Email</label><input type="email" id="auth-email" class="form-input" placeholder="your@email.com"></div>
+                    <div class="form-group"><label class="form-label">Пароль</label><input type="password" id="auth-password" class="form-input" placeholder="Придумайте пароль"></div>
+                    <div class="form-group"><label class="form-label">Имя (для регистрации)</label><input type="text" id="auth-name" class="form-input" placeholder="Ваше имя"></div>
+                    <button class="btn" id="btn-register">Зарегистрироваться</button>
+                    <button class="btn-outline" id="btn-login" style="margin-left:10px;">Войти</button>
+                    <div id="auth-message" style="margin-top:12px;"></div>
+                </div>
+                <div id="verify-box" style="display:none;" class="card">
+                    <h3>Подтверждение</h3>
+                    <p>На вашу почту отправлен код подтверждения. Введите его ниже.</p>
+                    <div class="form-group"><input type="text" id="verify-code" class="form-input" placeholder="Код из письма"></div>
+                    <button class="btn" id="btn-verify">Подтвердить</button>
+                    <div id="verify-message" style="margin-top:10px;"></div>
+                </div>
+            </div>
+
+            <div id="section-news" class="section">
                 <h1 class="page-title">Лента новостей</h1>
                 <div class="search-box">
                     <svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
@@ -317,11 +309,11 @@
                 <h1 class="page-title">Профиль сотрудника</h1>
                 <div class="card">
                     <div style="display:flex; align-items:center; gap:16px;">
-                        <div class="avatar" id="profile-avatar" style="width:60px; height:60px; font-size:24px; cursor:pointer;" onclick="event.stopPropagation(); document.getElementById('file-avatar2').click()" title="Заменить аватар">
-                            <span id="profile-avatar-text">ПЗ</span>
+                        <div class="avatar" id="profile-avatar" style="width:60px; height:60px; font-size:24px; cursor:pointer;" onclick="document.getElementById('file-avatar2').click()">
+                            <span id="profile-avatar-text">👤</span>
                             <input type="file" id="file-avatar2" accept="image/*" onchange="loadProfileAvatar(event)">
                         </div>
-                        <div><h3>Подсадний Захар Максимович</h3><p>Менеджер по продажам</p><p style="font-size:13px; color:#718096;">📧 podsadniy@workspace.local</p></div>
+                        <div><h3 id="profile-name">Имя пользователя</h3><p>Менеджер по продажам</p><p style="font-size:13px; color:#718096;" id="profile-email"></p></div>
                     </div>
                 </div>
                 <div class="card">
@@ -336,128 +328,63 @@
                     <div id="requests-list"><p style="color:#718096;">У вас пока нет отправленных заявок.</p></div>
                 </div>
                 <div class="support-box">
-                    <div class="support-icon" id="support-icon" onclick="event.stopPropagation(); document.getElementById('file-support').click()" title="Нажми, чтобы заменить иконку поддержки">
+                    <div class="support-icon" id="support-icon" onclick="document.getElementById('file-support').click()">
                         <img src="support.png" alt="Поддержка">
                         <input type="file" id="file-support" accept="image/*" onchange="loadSupportIcon(event)">
                     </div>
-                    <div class="support-info"><h3>📞 Поддержка</h3><p>Если у вас возникли вопросы или проблемы, обратитесь в IT-отдел.</p><p>📧 <strong>support@workspace.local</strong></p><p>📱 <strong>+7 (999) 123-45-67</strong></p><p>🏢 <strong>Кабинет 101, 1 этаж</strong></p></div>
+                    <div class="support-info"><h3>📞 Поддержка</h3><p>📧 <strong>support@workspace.local</strong></p><p>📱 <strong>+7 (999) 123-45-67</strong></p><p>🏢 <strong>Кабинет 101, 1 этаж</strong></p></div>
                 </div>
+                <button class="btn-outline" id="btn-logout" style="margin-top:20px;">🚪 Выйти</button>
             </div>
         </main>
     </div>
 </div>
 
 <div class="modal-overlay" id="modal-overlay">
-    <div class="modal"><h2 id="modal-title">Заголовок</h2><p id="modal-text">Текст новости...</p><button class="btn" onclick="closeModal()">Закрыть</button></div>
+    <div class="modal"><h2 id="modal-title"></h2><p id="modal-text"></p><button class="btn" onclick="closeModal()">Закрыть</button></div>
 </div>
 
 <script>
-    // Ваш Formspree endpoint
-    const FORMSPREE_URL = 'https://formspree.io/f/maqkdpgq';
+    const VACATION_FORM_URL = 'https://formspree.io/f/maqkdpgq';
+    const REGISTER_FORM_URL = 'https://formspree.io/f/mbdbapww';
+
+    function generateCode() { return Math.floor(100000 + Math.random() * 900000).toString(); }
+    function getUsers() { return JSON.parse(localStorage.getItem('workplace_users') || '{}'); }
+    function saveUsers(users) { localStorage.setItem('workplace_users', JSON.stringify(users)); }
+    function getCurrentUser() { return JSON.parse(localStorage.getItem('workplace_current_user') || 'null'); }
+    function setCurrentUser(user) { localStorage.setItem('workplace_current_user', JSON.stringify(user)); }
 
     function loadAvatar(event) {
         const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const av = document.getElementById('avatar-icon');
-                document.getElementById('avatar-text').style.display = 'none';
-                av.innerHTML = `<img src="${e.target.result}" alt="Аватар">`;
-            };
-            reader.readDataAsURL(file);
-        }
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = e => document.getElementById('avatar-icon').innerHTML = `<img src="${e.target.result}" alt="Аватар">`;
+        reader.readDataAsURL(file);
     }
-
     function loadProfileAvatar(event) {
         const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                const av = document.getElementById('profile-avatar');
-                document.getElementById('profile-avatar-text').style.display = 'none';
-                av.innerHTML = `<img src="${e.target.result}" alt="Аватар" style="width:100%; height:100%; object-fit:cover; border-radius:50%;">`;
-            };
-            reader.readDataAsURL(file);
-        }
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = e => document.getElementById('profile-avatar').innerHTML = `<img src="${e.target.result}" alt="Аватар" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">`;
+        reader.readDataAsURL(file);
     }
-
     function loadSupportIcon(event) {
         const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                document.getElementById('support-icon').innerHTML = `<img src="${e.target.result}" alt="Поддержка" style="max-width:100%; max-height:100%; object-fit:contain;">`;
-            };
-            reader.readDataAsURL(file);
-        }
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = e => document.getElementById('support-icon').innerHTML = `<img src="${e.target.result}" alt="Поддержка" style="max-width:100%;max-height:100%;object-fit:contain;">`;
+        reader.readDataAsURL(file);
     }
-
     function downloadFile(filename) {
-        const content = `Это учебный файл "${filename}", созданный в рамках практики ПМ.08.`;
-        const blob = new Blob([content], { type: 'text/plain' });
+        const blob = new Blob([`Это учебный файл "${filename}".`], {type:'text/plain'});
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url; a.download = filename; a.click();
         URL.revokeObjectURL(url);
     }
 
-    function saveRequestToLocalStorage(startDate, endDate, vacationType) {
-        const requests = JSON.parse(localStorage.getItem('workplace_requests') || '[]');
-        requests.push({
-            id: Date.now(),
-            startDate: startDate,
-            endDate: endDate,
-            type: vacationType,
-            status: 'На рассмотрении',
-            createdAt: new Date().toLocaleDateString('ru-RU')
-        });
-        localStorage.setItem('workplace_requests', JSON.stringify(requests));
-    }
-
-    function loadRequests() {
-        const requests = JSON.parse(localStorage.getItem('workplace_requests') || '[]');
-        const container = document.getElementById('requests-list');
-        if (requests.length === 0) {
-            container.innerHTML = '<p style="color:#718096;">У вас пока нет отправленных заявок.</p>';
-            return;
-        }
-        container.innerHTML = requests.reverse().map(req => `
-            <div class="card" style="margin-bottom:8px;">
-                <strong>Заявка №${req.id.toString().slice(-4)}</strong> от ${req.createdAt}<br>
-                📅 ${req.startDate} → ${req.endDate}<br>
-                🏖️ ${req.type}<br>
-                <small style="color:var(--accent);">Статус: ${req.status}</small>
-            </div>
-        `).join('');
-    }
-
-    async function sendRequestToEmail(startDate, endDate, vacationType) {
-        const formData = new FormData();
-        formData.append('start_date', startDate);
-        formData.append('end_date', endDate);
-        formData.append('vacation_type', vacationType);
-        formData.append('employee', 'Подсадний Захар Максимович');
-        formData.append('email', 'zakhar200@list.ru');
-
-        try {
-            const response = await fetch(FORMSPREE_URL, {
-                method: 'POST',
-                body: formData,
-                headers: { 'Accept': 'application/json' }
-            });
-            return response.ok;
-        } catch (error) {
-            console.error('Ошибка отправки:', error);
-            return false;
-        }
-    }
-
-    const checkSound = document.getElementById('check-sound');
-    const checkCritical = document.getElementById('check-critical');
-    document.getElementById('label-sound').addEventListener('click', () => checkSound.classList.toggle('checked'));
-    document.getElementById('label-critical').addEventListener('click', () => checkCritical.classList.toggle('checked'));
-
     const sections = {
+        auth: document.getElementById('section-auth'),
         news: document.getElementById('section-news'),
         docs: document.getElementById('section-docs'),
         vacation: document.getElementById('section-vacation'),
@@ -475,92 +402,171 @@
         sideItems.forEach(item => item.classList.remove('active'));
         const sideTarget = document.querySelector(`.sidebar-item[data-side="${page}"]`);
         if (sideTarget) sideTarget.classList.add('active');
-        if (page === 'profile') loadRequests();
+        if (page === 'profile') {
+            const user = getCurrentUser();
+            if (user) {
+                document.getElementById('profile-name').textContent = user.name;
+                document.getElementById('profile-email').textContent = '📧 ' + user.email;
+            }
+            loadRequests();
+        }
     }
-
     navLinks.forEach(link => link.addEventListener('click', e => { e.preventDefault(); switchPage(link.dataset.page); }));
 
-    document.querySelectorAll('#news-tags .tag').forEach(tag => {
-        tag.addEventListener('click', function() {
-            document.querySelectorAll('#news-tags .tag').forEach(t => t.classList.remove('active'));
-            this.classList.add('active');
-            const selectedTag = this.dataset.tag;
-            document.querySelectorAll('#news-container .card').forEach(card => {
-                card.style.display = (selectedTag === 'all' || card.dataset.tags === selectedTag) ? '' : 'none';
+    document.getElementById('btn-register').addEventListener('click', async () => {
+        const email = document.getElementById('auth-email').value.trim();
+        const password = document.getElementById('auth-password').value;
+        const name = document.getElementById('auth-name').value.trim();
+        const msg = document.getElementById('auth-message');
+        if (!email || !password || !name) { msg.innerHTML = '<span style="color:#E74C3C;">Заполните все поля.</span>'; return; }
+        const users = getUsers();
+        if (users[email]) { msg.innerHTML = '<span style="color:#E74C3C;">Пользователь с таким email уже существует.</span>'; return; }
+        const code = generateCode();
+        localStorage.setItem('pending_registration', JSON.stringify({ email, password, name, code }));
+        document.getElementById('verify-box').style.display = 'block';
+        msg.innerHTML = '';
+        try {
+            await fetch(REGISTER_FORM_URL, {
+                method: 'POST',
+                body: JSON.stringify({ email, code }),
+                headers: { 'Content-Type': 'application/json' }
             });
-        });
+        } catch(e) {}
     });
 
-    document.getElementById('news-search').addEventListener('input', function() {
-        const term = this.value.toLowerCase();
-        document.querySelectorAll('#news-container .card').forEach(card => {
-            card.style.display = card.textContent.toLowerCase().includes(term) ? '' : 'none';
-        });
+    document.getElementById('btn-verify').addEventListener('click', () => {
+        const pending = JSON.parse(localStorage.getItem('pending_registration'));
+        const inputCode = document.getElementById('verify-code').value.trim();
+        const msg = document.getElementById('verify-message');
+        if (!pending) { msg.innerHTML = '<span style="color:#E74C3C;">Нет ожидающей регистрации.</span>'; return; }
+        if (inputCode !== pending.code) { msg.innerHTML = '<span style="color:#E74C3C;">Неверный код.</span>'; return; }
+        const users = getUsers();
+        users[pending.email] = { name: pending.name, password: pending.password };
+        saveUsers(users);
+        setCurrentUser({ email: pending.email, name: pending.name });
+        localStorage.removeItem('pending_registration');
+        document.getElementById('verify-box').style.display = 'none';
+        document.getElementById('user-name-display').textContent = pending.name;
+        switchPage('news');
     });
 
-    const modalOverlay = document.getElementById('modal-overlay');
-    const modalTitle = document.getElementById('modal-title');
-    const modalText = document.getElementById('modal-text');
-    document.querySelectorAll('#news-container .card').forEach(card => {
-        card.addEventListener('click', function() {
-            modalTitle.textContent = this.querySelector('h3').textContent;
-            modalText.textContent = this.querySelector('p').textContent + ' Это расширенный текст новости. Все данные учебные и используются в рамках практики ПМ.08.';
-            modalOverlay.classList.add('show');
-        });
+    document.getElementById('btn-login').addEventListener('click', () => {
+        const email = document.getElementById('auth-email').value.trim();
+        const password = document.getElementById('auth-password').value;
+        const msg = document.getElementById('auth-message');
+        const users = getUsers();
+        if (!users[email] || users[email].password !== password) {
+            msg.innerHTML = '<span style="color:#E74C3C;">Неверный email или пароль.</span>';
+            return;
+        }
+        setCurrentUser({ email, name: users[email].name });
+        document.getElementById('user-name-display').textContent = users[email].name;
+        switchPage('news');
     });
-    window.closeModal = function() { modalOverlay.classList.remove('show'); };
-    modalOverlay.addEventListener('click', function(e) { if (e.target === modalOverlay) closeModal(); });
+
+    document.getElementById('btn-logout').addEventListener('click', () => {
+        localStorage.removeItem('workplace_current_user');
+        document.getElementById('user-name-display').textContent = 'Гость';
+        switchPage('auth');
+    });
+
+    function saveRequestToLocalStorage(startDate, endDate, vacationType) {
+        const requests = JSON.parse(localStorage.getItem('workplace_requests') || '[]');
+        requests.push({
+            id: Date.now(),
+            startDate, endDate,
+            type: vacationType,
+            status: 'На рассмотрении',
+            createdAt: new Date().toLocaleDateString('ru-RU')
+        });
+        localStorage.setItem('workplace_requests', JSON.stringify(requests));
+    }
+    function loadRequests() {
+        const requests = JSON.parse(localStorage.getItem('workplace_requests') || '[]');
+        const container = document.getElementById('requests-list');
+        if (!requests.length) {
+            container.innerHTML = '<p style="color:#718096;">У вас пока нет отправленных заявок.</p>';
+            return;
+        }
+        container.innerHTML = requests.reverse().map(req => `
+            <div class="card" style="margin-bottom:8px;">
+                <strong>Заявка №${req.id.toString().slice(-4)}</strong> от ${req.createdAt}<br>
+                📅 ${req.startDate} → ${req.endDate}<br>
+                🏖️ ${req.type}<br>
+                <small style="color:var(--accent);">Статус: ${req.status}</small>
+            </div>
+        `).join('');
+    }
+    async function sendVacationEmail(startDate, endDate, vacationType) {
+        const formData = new FormData();
+        formData.append('start_date', startDate);
+        formData.append('end_date', endDate);
+        formData.append('vacation_type', vacationType);
+        formData.append('employee', getCurrentUser()?.name || 'Неизвестный');
+        try {
+            await fetch(VACATION_FORM_URL, { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } });
+            return true;
+        } catch(e) { return false; }
+    }
 
     const startInput = document.getElementById('start-date');
     const endInput = document.getElementById('end-date');
-    const balanceInfo = document.getElementById('balance-info');
-    const btnSubmit = document.getElementById('btn-submit-vacation');
-    const vacationResult = document.getElementById('vacation-result');
-
+    if (startInput && endInput) {
+        startInput.addEventListener('change', updateBalance);
+        endInput.addEventListener('change', updateBalance);
+    }
     function updateBalance() {
-        if (!startInput.value || !endInput.value) { balanceInfo.innerHTML = '✅ Доступно: 14 дней · Запрошено: 0 дней'; return; }
-        const start = new Date(startInput.value), end = new Date(endInput.value);
-        if (end < start) { balanceInfo.innerHTML = '⚠️ Дата окончания раньше даты начала!'; return; }
-        const days = Math.ceil((end - start) / (1000*60*60*24)) + 1;
+        const start = startInput.value, end = endInput.value;
+        const balanceInfo = document.getElementById('balance-info');
+        if (!start || !end) { balanceInfo.innerHTML = '✅ Доступно: 14 дней · Запрошено: 0 дней'; return; }
+        if (new Date(end) < new Date(start)) { balanceInfo.innerHTML = '⚠️ Дата окончания раньше даты начала!'; return; }
+        const days = Math.ceil((new Date(end) - new Date(start)) / (1000*60*60*24)) + 1;
         balanceInfo.innerHTML = `✅ Доступно: 14 дней · Запрошено: ${days} дней`;
     }
-    startInput.addEventListener('change', updateBalance);
-    endInput.addEventListener('change', updateBalance);
-
-    btnSubmit.addEventListener('click', async function() {
-        if (!startInput.value || !endInput.value) { vacationResult.innerHTML = '<span style="color:#E74C3C;">Выберите даты.</span>'; return; }
-        if (new Date(endInput.value) < new Date(startInput.value)) { vacationResult.innerHTML = '<span style="color:#E74C3C;">Дата окончания раньше начала.</span>'; return; }
-
-        const startDate = startInput.value;
-        const endDate = endInput.value;
+    document.getElementById('btn-submit-vacation').addEventListener('click', async function() {
+        const start = startInput.value, end = endInput.value;
         const vacationType = document.getElementById('vacation-type').value;
+        const result = document.getElementById('vacation-result');
+        if (!start || !end) { result.innerHTML = '<span style="color:#E74C3C;">Выберите даты.</span>'; return; }
+        if (new Date(end) < new Date(start)) { result.innerHTML = '<span style="color:#E74C3C;">Дата окончания раньше начала.</span>'; return; }
+        this.disabled = true; this.textContent = 'Отправка...';
+        const ok = await sendVacationEmail(start, end, vacationType);
+        saveRequestToLocalStorage(start, end, vacationType);
+        result.innerHTML = ok
+            ? '<span style="color:#27AE60;">✅ Заявка отправлена! Письмо придёт на почту.</span>'
+            : '<span style="color:#27AE60;">✅ Заявка сохранена локально.</span>';
+        this.disabled = true; this.style.opacity = '0.6'; this.textContent = 'Отправлено ✓';
+    });
 
-        btnSubmit.disabled = true;
-        btnSubmit.textContent = 'Отправка...';
-        vacationResult.innerHTML = '';
+    document.getElementById('label-sound').addEventListener('click', () => document.getElementById('check-sound').classList.toggle('checked'));
+    document.getElementById('label-critical').addEventListener('click', () => document.getElementById('check-critical').classList.toggle('checked'));
+    document.getElementById('btn-save-settings').addEventListener('click', () => {
+        const res = document.getElementById('settings-result');
+        res.innerHTML = '<span style="color:#27AE60;">✅ Настройки сохранены!</span>';
+        setTimeout(() => res.innerHTML = '', 3000);
+    });
 
-        const emailSent = await sendRequestToEmail(startDate, endDate, vacationType);
-        saveRequestToLocalStorage(startDate, endDate, vacationType);
+    const modal = document.getElementById('modal-overlay');
+    document.querySelectorAll('#news-container .card').forEach(card => {
+        card.addEventListener('click', () => {
+            document.getElementById('modal-title').textContent = card.querySelector('h3').textContent;
+            document.getElementById('modal-text').textContent = card.querySelector('p').textContent + ' Это расширенный текст новости.';
+            modal.classList.add('show');
+        });
+    });
+    window.closeModal = () => modal.classList.remove('show');
+    modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
 
-        if (emailSent) {
-            vacationResult.innerHTML = '<span style="color:#27AE60; font-weight:700;">✅ Заявка отправлена! Письмо придёт на почту.</span>';
+    (function init() {
+        const user = getCurrentUser();
+        if (user) {
+            document.getElementById('user-name-display').textContent = user.name;
+            switchPage('news');
         } else {
-            vacationResult.innerHTML = '<span style="color:#27AE60; font-weight:700;">✅ Заявка сохранена локально. Проверьте раздел "Мои заявки".</span>';
+            switchPage('auth');
         }
-
-        btnSubmit.disabled = true;
-        btnSubmit.style.opacity = '0.6';
-        btnSubmit.textContent = 'Отправлено ✓';
-    });
-
-    document.getElementById('btn-save-settings').addEventListener('click', function() {
-        const result = document.getElementById('settings-result');
-        result.innerHTML = '<span style="color:#27AE60; font-weight:700;">✅ Настройки сохранены!</span>';
-        setTimeout(() => { result.innerHTML = ''; }, 3000);
-    });
-
-    loadRequests();
-    console.log('🚀 WorkSpace запущен. Заявки сохраняются и отправляются через Formspree.');
+        loadRequests();
+    })();
 </script>
 </body>
 </html>
